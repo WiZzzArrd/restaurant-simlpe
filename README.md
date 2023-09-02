@@ -1,3 +1,3 @@
-# This is the simple restaurant-app
+# This is the simple restaurant-app (my second project =))) )
 
 
