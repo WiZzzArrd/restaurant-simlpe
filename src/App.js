@@ -1,24 +1,43 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from './components/Layout/Header';
+import React, { useState } from 'react';
+import Meals from './components/Meals/Meals';
+import CartContextProvider from './store/CartContextProvider';
+import Cart from "./components/Cart/Cart"
+
+
+
+
+
 
 function App() {
+
+  const [style, setStyle] = useState("none")
+
+  function onCloseModal(e){
+
+   e.target.getAttribute("data")
+    
+
+   if(e.target.getAttribute("data") === "backdrop" || e.target.getAttribute("data") === "button"){
+      setStyle("none")
+   }
+  
+
+  }
+
+  function onOpenModal(){
+    setStyle("block")
+  }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <CartContextProvider>
+        <Cart  onCloseModal = {onCloseModal} style = {style} />
+         <Header onOpenModal = {onOpenModal}/>
+         <Meals/>
+       
+     </CartContextProvider>
   );
 }
 
